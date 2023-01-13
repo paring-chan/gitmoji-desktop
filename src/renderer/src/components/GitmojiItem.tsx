@@ -3,7 +3,7 @@ import { gitmojis } from 'gitmojis/src/gitmojis.json'
 
 export const GitmojiItem: React.FC<{ emoji: (typeof gitmojis)[0] }> = ({ emoji }) => {
   return (
-    <div className="rounded-md bg-white shadow-md mt-4 p-4">
+    <div className="rounded-md bg-white shadow-md mt-4 p-4 hover:scale-95 active:scale-90 transition-all cursor-pointer">
       <div className="flex gap-4">
         <div className="text-4xl drop-shadow-lg">{emoji.emoji}</div>
         <div>
