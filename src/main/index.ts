@@ -6,6 +6,10 @@ import icon from '../../resources/icon.png?asset'
 import isDev from 'electron-is-dev'
 import positioner from 'electron-traywindow-positioner'
 
+if (!app.requestSingleInstanceLock()) {
+  app.quit()
+}
+
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -35,42 +39,54 @@ function createWindow(): void {
   })
 
   mainWindow.on('ready-to-show', () => {
-    tray = new Tray(getTrayIcon())
+    if (!tray) {
+      tray = new Tray(getTrayIcon())
 
-    const contextMenu = Menu.buildFromTemplate([
-      {
-        label: app.getName(),
-        click: (): void => {
-          positioner.position(mainWindow, tray.getBounds())
+      app.on('second-instance', () => {
+        positioner.position(mainWindow, tray.getBounds())
 
-          mainWindow.show()
-          mainWindow.focus()
+        mainWindow.show()
+        mainWindow.focus()
+      })
+
+      const contextMenu = Menu.buildFromTemplate([
+        {
+          label: app.getName(),
+          click: (): void => {
+            positioner.position(mainWindow, tray.getBounds())
+
+            mainWindow.show()
+            mainWindow.focus()
+          }
+        },
+        {
+          id: 'quit',
+          label: 'Quit',
+          accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+          click: (): void => {
+            app.quit()
+          }
         }
-      },
-      {
-        id: 'quit',
-        label: 'Quit',
-        accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-        click: (): void => {
-          app.quit()
-        }
-      }
-    ])
+      ])
 
-    tray.on('click', () => {
-      console.log('click')
-    })
+      tray.on('click', () => {
+        positioner.position(mainWindow, tray.getBounds())
 
-    tray.on('right-click', () => {
-      tray.popUpContextMenu()
-    })
+        mainWindow.show()
+        mainWindow.focus()
+      })
 
-    tray.on('balloon-click', () => {
-      console.log('balloon click')
-    })
+      tray.on('right-click', () => {
+        tray.popUpContextMenu()
+      })
 
-    tray.setToolTip(app.name)
-    tray.setContextMenu(contextMenu)
+      tray.on('balloon-click', () => {
+        console.log('balloon click')
+      })
+
+      tray.setToolTip(app.name)
+      tray.setContextMenu(contextMenu)
+    }
   })
 
   // HMR for renderer base on electron-vite cli.
