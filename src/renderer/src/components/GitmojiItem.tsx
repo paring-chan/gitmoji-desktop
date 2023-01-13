@@ -20,7 +20,22 @@ export const GitmojiItem: React.FC<{ emoji: (typeof gitmojis)[0] }> = ({ emoji }
   }, [])
 
   const copy = React.useCallback(async () => {
-    await navigator.clipboard.writeText(emoji.emoji)
+    const copyType = localStorage.copyType ?? 'emoji'
+
+    let text: string
+
+    switch (copyType) {
+      case 'emoji':
+        text = emoji.emoji
+        break
+      case 'code':
+        text = emoji.code
+        break
+      default:
+        return
+    }
+
+    await navigator.clipboard.writeText(text)
 
     const x = mouseX.current / window.innerWidth
     const y = mouseY.current / window.innerHeight
