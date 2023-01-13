@@ -1,6 +1,6 @@
 import React from 'react'
 import { gitmojis } from 'gitmojis/src/gitmojis.json'
-import { GitmojiItem } from './GitmojiItem'
+import { GitmojiItem } from '../components/GitmojiItem'
 
 export const GitmojiList: React.FC = () => {
   return (
