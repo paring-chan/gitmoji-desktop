@@ -30,7 +30,7 @@ function createWindow(): void {
   })
 
   mainWindow.on('blur', () => {
-    mainWindow.hide()
+    mainWindow.minimize()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -39,6 +39,9 @@ function createWindow(): void {
   })
 
   mainWindow.on('ready-to-show', () => {
+    mainWindow.show()
+    mainWindow.minimize()
+
     if (!tray) {
       tray = new Tray(getTrayIcon())
 
@@ -86,6 +89,8 @@ function createWindow(): void {
 
       tray.setToolTip(app.name)
       tray.setContextMenu(contextMenu)
+
+      positioner.position(mainWindow, tray.getBounds())
     }
   })
 
