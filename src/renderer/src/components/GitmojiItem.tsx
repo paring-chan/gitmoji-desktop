@@ -7,7 +7,7 @@ export const GitmojiItem: React.FC<{ emoji: (typeof gitmojis)[0] }> = ({ emoji }
   const mouseY = React.useRef(0)
 
   React.useEffect(() => {
-    const listener = (e: MouseEvent) => {
+    const listener = (e: MouseEvent): void => {
       mouseX.current = e.clientX
       mouseY.current = e.clientY
     }
