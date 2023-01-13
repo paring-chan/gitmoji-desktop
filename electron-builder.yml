@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: gitmoji-desktop
+appId: dev.pikokr.gitmoji
+productName: Gitmoji
 directories:
   buildResources: build
 files:
@@ -12,7 +12,7 @@ asarUnpack:
   - resources/*
 afterSign: build/notarize.js
 win:
-  executableName: gitmoji-desktop
+  executableName: Gitmoji
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
@@ -32,7 +32,7 @@ linux:
     - AppImage
     - snap
     - deb
-  maintainer: electronjs.org
+  maintainer: ppap.dev
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
