@@ -10,7 +10,7 @@ function App(): JSX.Element {
         </Link>
         <div className="flex-grow" />
         <Link
-          to="/help"
+          to="/settings"
           className="border w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:border-black transition-all"
         >
           <QuestionMark />

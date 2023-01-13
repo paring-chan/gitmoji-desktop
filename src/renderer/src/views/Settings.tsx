@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const HelpPage: React.FC = () => {
+export const SettingsPage: React.FC = () => {
   return (
     <div className="p-4">
       <h2 className="text-3xl font-bold">Gitmoji Desktop</h2>
