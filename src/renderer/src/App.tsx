@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom'
-import { QuestionMark } from 'tabler-icons-react'
+import { Settings } from 'tabler-icons-react'
 
 function App(): JSX.Element {
   return (
@@ -13,7 +13,7 @@ function App(): JSX.Element {
           to="/settings"
           className="border w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:border-black transition-all"
         >
-          <QuestionMark />
+          <Settings />
         </Link>
       </div>
       <div className="flex-grow h-0 overflow-y-scroll">
