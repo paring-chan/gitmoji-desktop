@@ -727,6 +727,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@types/canvas-confetti@npm:1.6.0"
+  checksum: e1bd2bc81e4d6ec6241982a4087ed90a3c21f858390dda7cb68e8aeb1df5573fc7c263ea4272397d2b39f0e78dcd192e8ba4a93c182ff29f80ea74073aaee496
+  languageName: node
+  linkType: hard
+
 "@types/debug@npm:^4.1.6":
   version: 4.1.7
   resolution: "@types/debug@npm:4.1.7"
@@ -1618,6 +1625,13 @@ __metadata:
   version: 1.0.30001443
   resolution: "caniuse-lite@npm:1.0.30001443"
   checksum: e39c17c54c7a2e263c05a7391b1126014be88826e5cacd6cf9e976b87c5a3a3ea3e53ff5d410093dbd56fac7b50fba4d55c2fa4d6b9c6bd28202886d7fedfd70
+  languageName: node
+  linkType: hard
+
+"canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "canvas-confetti@npm:1.6.0"
+  checksum: be19e3be736ab28aa8af7b53cba9f4146f5714edadbf4d5a7d7b1899914dc59a8ac5574260fe6b7d9995c51df5787b0b707adfbb72dbacbc61fc03f9f2b25291
   languageName: node
   linkType: hard
 
@@ -2973,6 +2987,7 @@ __metadata:
     "@electron-toolkit/tsconfig": ^1.0.1
     "@electron-toolkit/utils": ^1.0.2
     "@electron/notarize": ^1.2.3
+    "@types/canvas-confetti": ^1.6.0
     "@types/node": 16.18.11
     "@types/react": 18.0.26
     "@types/react-dom": 18.0.10
@@ -2980,6 +2995,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.48.0
     "@vitejs/plugin-react": ^3.0.1
     autoprefixer: ^10.4.13
+    canvas-confetti: ^1.6.0
     electron: ^21.3.3
     electron-builder: ^23.6.0
     electron-updater: ^5.3.0
