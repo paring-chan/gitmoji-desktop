@@ -1,8 +1,10 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, BrowserWindow, Tray, NativeImage, nativeImage, Menu } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import icon16 from '../../resources/icon_16.png?asset'
 import icon from '../../resources/icon.png?asset'
 import isDev from 'electron-is-dev'
+import positioner from 'electron-traywindow-positioner'
 
 function createWindow(): void {
   // Create the browser window.
@@ -23,13 +25,52 @@ function createWindow(): void {
     }
   })
 
-  mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
+  mainWindow.on('blur', () => {
+    mainWindow.hide()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
+  })
+
+  mainWindow.on('ready-to-show', () => {
+    tray = new Tray(getTrayIcon())
+
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: app.getName(),
+        click: (): void => {
+          positioner.position(mainWindow, tray.getBounds())
+
+          mainWindow.show()
+          mainWindow.focus()
+        }
+      },
+      {
+        id: 'quit',
+        label: 'Quit',
+        accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click: (): void => {
+          app.quit()
+        }
+      }
+    ])
+
+    tray.on('click', () => {
+      console.log('click')
+    })
+
+    tray.on('right-click', () => {
+      tray.popUpContextMenu()
+    })
+
+    tray.on('balloon-click', () => {
+      console.log('balloon click')
+    })
+
+    tray.setToolTip(app.name)
+    tray.setContextMenu(contextMenu)
   })
 
   // HMR for renderer base on electron-vite cli.
@@ -39,6 +80,12 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+}
+
+let tray: Tray = null!
+
+const getTrayIcon = (): NativeImage | string => {
+  return nativeImage.createFromPath(icon16)
 }
 
 // This method will be called when Electron has finished

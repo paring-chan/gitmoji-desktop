@@ -2197,6 +2197,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-traywindow-positioner@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "electron-traywindow-positioner@npm:1.1.1"
+  checksum: 8582f739017484d893f566e6ec5d8cb6db25b1eac243bbe2c20bdc208e38145ac46c86169cc39f83c8bdb5513f265791ec33899d03bcecfe5d40d0979648f6c5
+  languageName: node
+  linkType: hard
+
 "electron-updater@npm:^5.3.0":
   version: 5.3.0
   resolution: "electron-updater@npm:5.3.0"
@@ -2236,7 +2243,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^21.3.3":
+"electron@npm:21":
   version: 21.3.4
   resolution: "electron@npm:21.3.4"
   dependencies:
@@ -3013,9 +3020,10 @@ __metadata:
     "@vitejs/plugin-react": ^3.0.1
     autoprefixer: ^10.4.13
     canvas-confetti: ^1.6.0
-    electron: ^21.3.3
+    electron: 21
     electron-builder: ^23.6.0
     electron-is-dev: ^2.0.0
+    electron-traywindow-positioner: ^1.1.1
     electron-updater: ^5.3.0
     electron-vite: ^1.0.17
     eslint: ^8.31.0
