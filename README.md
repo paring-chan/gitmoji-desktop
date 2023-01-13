@@ -1,6 +1,6 @@
-# gitmoji-desktop
+# Gitmoji Desktop
 
-An Electron application with React and TypeScript
+A simple desktop app for gitmoji
 
 ## Recommended IDE Setup
 

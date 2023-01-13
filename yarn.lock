@@ -2243,7 +2243,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:21":
+"electron@npm:21.3.4":
   version: 21.3.4
   resolution: "electron@npm:21.3.4"
   dependencies:
@@ -3020,7 +3020,7 @@ __metadata:
     "@vitejs/plugin-react": ^3.0.1
     autoprefixer: ^10.4.13
     canvas-confetti: ^1.6.0
-    electron: 21
+    electron: 21.3.4
     electron-builder: ^23.6.0
     electron-is-dev: ^2.0.0
     electron-traywindow-positioner: ^1.1.1
